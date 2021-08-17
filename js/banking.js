@@ -83,6 +83,7 @@ document.getElementById('widthrow-btn').addEventListener('click', function () {
         updateBalance(widthrowAmount, false);
     }
     if (CurrentBalance < widthrowAmount) {
-        console.log("You can not widthrow more than in have your account");
+        alert("You can not widthrow more than in have your account");
+        // console.log("You can not widthrow more than in have your account");
     }
 })
