@@ -1,18 +1,17 @@
-function getInputValue() {
-    const DepositInput = document.getElementById('input-Deposit');
-    const DepositAmountText = DepositInput.value;
-    const DepositAmount = parseFloat(DepositAmountText);
+function getInputValue(inputId) {
+    const inputFild = document.getElementById(inputId);
+    const inputAmountText = inputFild.value;
+    const amountValue = parseFloat(inputAmountText);
     // clear input 
-    DepositInput.value = '';
-
-    return DepositAmount;
+    inputFild.value = '';
+    return amountValue;
 }
 
 document.getElementById('Deposit-btn').addEventListener('click', function () {
     /*     const DepositInput = document.getElementById('input-Deposit');
         const DepositAmountText = DepositInput.value;
         const DepositAmount = parseFloat(DepositAmountText); */
-    const DepositAmount = getInputValue();
+    const DepositAmount = getInputValue('input-Deposit');
 
     // Get currant Deposit
     const depositTotal = document.getElementById('total-deposit');
@@ -29,9 +28,11 @@ document.getElementById('Deposit-btn').addEventListener('click', function () {
 
 document.getElementById('widthrow-btn').addEventListener('click', function () {
 
-    const widthrowInput = document.getElementById('input-withdrow');
+    /* const widthrowInput = document.getElementById('input-withdrow');
     const widthrowAmountText = widthrowInput.value;
     const widthrowAmount = parseFloat(widthrowAmountText);
+     */
+    const widthrowAmount = getInputValue('input-withdrow');
     console.log(widthrowAmount);
 
     // Get currant withdrow
@@ -48,7 +49,4 @@ document.getElementById('widthrow-btn').addEventListener('click', function () {
     balanceTotal.innerText = PreviousBalanceTotal - widthrowAmount;
 
     console.log(PreviousBalanceTotal);
-
-    // clear input
-    widthrowInput.value = '';
 })
