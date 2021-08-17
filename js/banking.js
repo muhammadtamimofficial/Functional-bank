@@ -12,11 +12,19 @@ function updateTotalFild(TotalFoldId, Amount) {
     const previouseTotal = parseFloat(TotalText);
     totalElement.innerText = previouseTotal + Amount;
 }
-function updateBalance(Amount, isadd) {
+function getCurrentBalance() {
     const balanceTotal = document.getElementById('total-amount');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
-    balanceTotal.innerText = previousBalanceTotal + Amount;
+    return previousBalanceTotal;
+}
+function updateBalance(Amount, isadd) {
+    const previousBalanceTotal = getCurrentBalance();
+
+    const balanceTotal = document.getElementById('total-amount');
+    /*   const balanceTotalText = balanceTotal.innerText;
+      const previousBalanceTotal = parseFloat(balanceTotalText); */
+    // balanceTotal.innerText = previousBalanceTotal + Amount;
     if (isadd == true) {
         balanceTotal.innerText = previousBalanceTotal + Amount;
     }
@@ -63,8 +71,8 @@ document.getElementById('widthrow-btn').addEventListener('click', function () {
     
 
     withdrowTotal.innerText = previousWitdrowTotal + widthrowAmount; */
-
-    if (widthrowAmount > 0) {
+    const CurrentBalance = getCurrentBalance();
+    if (widthrowAmount > 0 && CurrentBalance > widthrowAmount) {
         updateTotalFild('withdrow-total', widthrowAmount);
 
         // Get currant balanceTotal
@@ -73,5 +81,8 @@ document.getElementById('widthrow-btn').addEventListener('click', function () {
         const PreviousBalanceTotal = parseFloat(balanceTotalText);
         balanceTotal.innerText = PreviousBalanceTotal - widthrowAmount; */
         updateBalance(widthrowAmount, false);
+    }
+    if (CurrentBalance < widthrowAmount) {
+        console.log("You can not widthrow more than in have your account");
     }
 })
