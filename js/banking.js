@@ -1,3 +1,5 @@
+
+
 document.getElementById('Deposit-btn').addEventListener('click', function () {
     const DepositInput = document.getElementById('input-Deposit');
     const DepositAmountText = DepositInput.value;
@@ -13,7 +15,6 @@ document.getElementById('Deposit-btn').addEventListener('click', function () {
     const balanceTotal = document.getElementById('total-amount');
     const balanceTotalText = balanceTotal.innerText;
     const previousBalanceTotal = parseFloat(balanceTotalText);
-
     balanceTotal.innerText = previousBalanceTotal + DepositAmount;
 
     // clear input 
