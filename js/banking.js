@@ -12,6 +12,18 @@ function updateTotalFild(TotalFoldId, Amount) {
     const previouseTotal = parseFloat(TotalText);
     totalElement.innerText = previouseTotal + Amount;
 }
+function updateBalance(Amount, isadd) {
+    const balanceTotal = document.getElementById('total-amount');
+    const balanceTotalText = balanceTotal.innerText;
+    const previousBalanceTotal = parseFloat(balanceTotalText);
+    balanceTotal.innerText = previousBalanceTotal + Amount;
+    if (isadd == true) {
+        balanceTotal.innerText = previousBalanceTotal + Amount;
+    }
+    else {
+        balanceTotal.innerText = previousBalanceTotal - Amount;
+    }
+}
 document.getElementById('Deposit-btn').addEventListener('click', function () {
     /*     const DepositInput = document.getElementById('input-Deposit');
         const DepositAmountText = DepositInput.value;
@@ -23,13 +35,17 @@ document.getElementById('Deposit-btn').addEventListener('click', function () {
     const depositTotalText = depositTotal.innerText;
     const previouseDepositTotal = parseFloat(depositTotalText);
     depositTotal.innerText = previouseDepositTotal + DepositAmount; */
-    updateTotalFild('total-deposit', DepositAmount);
+    if (DepositAmount > 0) {
+        updateTotalFild('total-deposit', DepositAmount);
 
-    // updated balance
-    const balanceTotal = document.getElementById('total-amount');
-    const balanceTotalText = balanceTotal.innerText;
-    const previousBalanceTotal = parseFloat(balanceTotalText);
-    balanceTotal.innerText = previousBalanceTotal + DepositAmount;
+        // updated balance
+        /*    const balanceTotal = document.getElementById('total-amount');
+           const balanceTotalText = balanceTotal.innerText;
+           const previousBalanceTotal = parseFloat(balanceTotalText);
+           balanceTotal.innerText = previousBalanceTotal + DepositAmount; */
+        updateBalance(DepositAmount, true);
+    }
+
 })
 
 document.getElementById('widthrow-btn').addEventListener('click', function () {
@@ -48,11 +64,14 @@ document.getElementById('widthrow-btn').addEventListener('click', function () {
 
     withdrowTotal.innerText = previousWitdrowTotal + widthrowAmount; */
 
-    updateTotalFild('withdrow-total', widthrowAmount);
+    if (widthrowAmount > 0) {
+        updateTotalFild('withdrow-total', widthrowAmount);
 
-    // Get currant balanceTotal
-    const balanceTotal = document.getElementById('total-amount');
-    const balanceTotalText = balanceTotal.innerText;
-    const PreviousBalanceTotal = parseFloat(balanceTotalText);
-    balanceTotal.innerText = PreviousBalanceTotal - widthrowAmount;
+        // Get currant balanceTotal
+        /* const balanceTotal = document.getElementById('total-amount');
+        const balanceTotalText = balanceTotal.innerText;
+        const PreviousBalanceTotal = parseFloat(balanceTotalText);
+        balanceTotal.innerText = PreviousBalanceTotal - widthrowAmount; */
+        updateBalance(widthrowAmount, false);
+    }
 })
